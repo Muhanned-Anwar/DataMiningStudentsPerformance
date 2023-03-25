@@ -16,3 +16,6 @@ df = pd.concat([df, dum_df], axis=1)
 
 # Compute average score from math, reading, and writing scores
 df['score'] = df[['math score', 'reading score', 'writing score']].mean(axis=1)
+
+# Drop unnecessary columns
+df.drop(['gender', 'lunch', 'test preparation course', 'math score', 'reading score', 'writing score', 'race/ethnicity', 'parental level of education'], axis=1, inplace=True)
