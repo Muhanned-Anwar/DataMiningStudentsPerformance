@@ -19,3 +19,6 @@ df['score'] = df[['math score', 'reading score', 'writing score']].mean(axis=1)
 
 # Drop unnecessary columns
 df.drop(['gender', 'lunch', 'test preparation course', 'math score', 'reading score', 'writing score', 'race/ethnicity', 'parental level of education'], axis=1, inplace=True)
+
+# Save preprocessed data to a new CSV file
+df.to_csv('new_data.csv', index=False)
