@@ -9,3 +9,7 @@ encoder = LabelEncoder()
 df['enc_gender'] = encoder.fit_transform(df['gender'])
 df['enc_lunch'] = encoder.fit_transform(df['lunch'])
 df['enc_test_preparation_course'] = encoder.fit_transform(df['test preparation course'])
+
+# Create dummy variables for categorical columns
+dum_df = pd.get_dummies(df[['race/ethnicity', 'parental level of education']])
+df = pd.concat([df, dum_df], axis=1)
