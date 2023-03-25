@@ -13,3 +13,6 @@ df['enc_test_preparation_course'] = encoder.fit_transform(df['test preparation c
 # Create dummy variables for categorical columns
 dum_df = pd.get_dummies(df[['race/ethnicity', 'parental level of education']])
 df = pd.concat([df, dum_df], axis=1)
+
+# Compute average score from math, reading, and writing scores
+df['score'] = df[['math score', 'reading score', 'writing score']].mean(axis=1)
