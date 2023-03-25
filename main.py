@@ -22,3 +22,7 @@ df.drop(['gender', 'lunch', 'test preparation course', 'math score', 'reading sc
 
 # Save preprocessed data to a new CSV file
 df.to_csv('new_data.csv', index=False)
+
+# Split data into features and target
+X = df.drop('score', axis=1)
+y = df['score']
