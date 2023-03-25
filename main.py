@@ -5,6 +5,9 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 import numpy as np
+from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+
 
 # Load and prepare data
 df = pd.read_csv('StudentsPerformance.csv')
@@ -46,3 +49,10 @@ y_pred = model.predict(X_test)
 error = np.sqrt(mean_squared_error(y_pred=y_pred, y_true=y_test))
 print(f"RMSE: {error}")
 print(f"R-squared: {model.score(X_test, y_test)}")
+
+# Clustering
+kmeans = KMeans(n_clusters=3)
+kmeans.fit(X_train)
+labels = kmeans.predict(X_test)
+score = silhouette_score(X_test, labels)
+print(f"Silhouette score: {score}")
